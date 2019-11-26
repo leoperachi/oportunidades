@@ -1,3 +1,7 @@
+@extends('layouts.app')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+@section('content')
 <div class="card">
     <div class="card-body">
         <nav aria-label="breadcrumb">
@@ -150,3 +154,4 @@
         });
     });
 </script>
+@endsection

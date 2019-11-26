@@ -346,7 +346,7 @@
                         <ul class="nav nav-treeview">
                             @if (\Auth::user()->hasAcesso("Importacao"))
                                 <li class="nav-item">
-                                    <a url="{{route('importacao')}}" class="nav-link btnCLick">
+                                    <a href="{{route('importacao')}}" class="nav-link">
                                             <i class="fa fa-circle-o nav-icon"></i>
                                             <p>Importação</p>
                                         </a>
