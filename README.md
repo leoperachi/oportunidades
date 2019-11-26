@@ -1,2 +1,0 @@
-# oportunidades
-Web Oportunidades
