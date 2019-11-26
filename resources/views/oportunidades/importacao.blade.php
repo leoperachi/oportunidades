@@ -138,15 +138,9 @@
 
 @yield('scripts')
 <script>
-     function bindAllDocReadyThings(url){
-        window.history.pushState('page2', 'Title', url);
-    }
     $(function(){ 
-       
-
         $("#btnSubmit").click(function() {
             var form = $( "#formImportar" );
-            
             if(form.valid()){
                 $("#loading").show();
                 $("#btnSubmit").hide();

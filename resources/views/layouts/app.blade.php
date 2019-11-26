@@ -40,7 +40,7 @@
     <script src="{{ asset('js/jquery-datatables.js') }}"></script>
     <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+    <script src="https://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
 </head>
 <body class="sidebar-mini sidebar-open" style="background:#f1f1f1">
 <div id="app" class="wrapper">
