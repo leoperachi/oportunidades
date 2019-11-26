@@ -282,3 +282,15 @@ table.dataTable thead th, table.dataTable thead td {
 #btnShowFiltro{
   width: 50px !important;
 }
+
+@media screen and (max-width : 1025px)
+{
+    .col-lg-3{
+      flex: 0 0 42%!important;
+      max-width: 42%!important;
+    }
+
+    .card-login{
+      margin-right: 10px!important;
+    }
+}
