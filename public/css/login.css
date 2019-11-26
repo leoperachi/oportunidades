@@ -29,11 +29,17 @@ body {
 }
 
 @media (max-width:576px){
-
-
+	
+	.card {
+		right: 5px !important;
+		top: 0px !important;
+		margin-top: 80px !important;
+	}
+	
 	.card-login{
 		margin-left: 10px;
 		margin-right: 0;
+		
 	}
 }
 
