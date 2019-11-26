@@ -28,7 +28,7 @@ body {
     margin-right: 180px;
 }
 
-@media (max-width:576px){
+@media (max-width:1176px){
 	
 	.card {
 		right: 5px !important;
