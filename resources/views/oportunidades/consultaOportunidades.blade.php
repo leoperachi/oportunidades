@@ -430,56 +430,7 @@
                 }
 
                 $(esseCheckbox).prop("checked", true);
-                var filtro = $("#formConsultar").serialize();
-                filtro['idTipo'] = $($(this).find('input')).val();
-                var x = this;
-                $.ajax( {
-                    url: "{{route('oportunidades.consultar')}}",
-                    method: "POST",
-                    data: filtro,
-                    success: function( data ) {
-                        $("#loading").hide();               
-                        $("#divPrincipal").html(data);
-
-                    },
-                    complete: function(){
-                        setTimeout(() => {
-                            $('#myTable').DataTable({
-                                "order": [[ 3, "desc" ]],
-                                "pageLength": 50,
-                                "columnDefs": [
-                                    { 
-                                        "orderable": false, 
-                                        "targets": 0,
-                                        "className": 'select-checkbox',
-                                        "width": "4%", 
-                                    },
-                                    { 
-                                        "targets": 1,
-                                        "width": "5%", 
-                                    },
-                                    { 
-                                        "targets": 3,
-                                        "width": "5%", 
-                                    },
-                                    { 
-                                        "targets": 4,
-                                        "width": "10%", 
-                                    },
-                                    { 
-                                        "targets": 7,
-                                        "width": "9%", 
-                                    }
-                                ],
-                            });
-                            $("#loading").hide();               
-                        }, 600);
-        
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        alert(thrownError);
-                    }
-                });   
+                this.form.submit();
             }
 
             return false;
@@ -487,7 +438,9 @@
 
         $(".clickable").on('click', function(event) {
             $("#loading").show();            
-            window.location.href = "/oportunidades/acompanhamento/" + $(this).data('id');
+            window.location.href = 
+                "/homolog_oportunidade/oportunidades/public/oportunidades/acompanhamento/" + 
+                    $(this).data('id');
         });
 
         $("#chkSelectAll").on('click', function(){
