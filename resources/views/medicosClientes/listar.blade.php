@@ -59,90 +59,94 @@
                 </div>
                 <br/>
                 <div class="row">
-                        <div class="col-sm-10">
-                            <br>
-                        </div>
-                        <div class="col-sm-2">
-                            <div id="form-acoes" class="form-group float-right">
-                                <div class="input-group" style="bottom: 10px;">
-                                    <div class="input-group-append">
-                                        <button  id="btnShowFiltro" type="button"
-                                            title="Filtro avançado" data-placement="top"
-                                            class="btn btn-secondary fa fa-filter nav-icon"
-                                            style="float: left;width:24px">
-                                        </button>
-                                        <button  id="btnLimpar" name="acao" value="limpar"
-                                            title="Limpar" data-placement="top" type="submit"
-                                            class="btn btn-secondary fa fa-eraser nav-icon"
-                                            style="width:50px">
-                                        </button>
-                                        <button type="submit" id="btnConsultar" 
-                                            class="btn btn-secondary fa fa-search nav-icon" 
-                                            data-toggle="tooltip" title="Pesquisar" 
-                                            data-placement="top" style="width:50px">
-                                        </button>
-                                        <button type="button" id="status" 
-                                            class="btn btn-secondary dropdown-toggle-split" 
-                                            data-toggle="dropdown" aria-haspopup="true" 
-                                            aria-expanded="false" title="Ações" data-placement="top">
-                                            <i class="fa fa-check"></i>
-                                            <i class="dropdown-toggle"></i>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <input type="submit" class="dropdown-item" name="acao" value="Ativar">
-                                            <input type="submit" class="dropdown-item" name="acao" value="Inativar">
-                                            <input type="submit" class="dropdown-item" name="acao" value="Remover">
-                                        </div>
-
-                                        <a href="javascript:navigate('{{route('medicosClientes.inserir')}}');" 
-                                            id="cadastro" class="btn btn-secondary" 
-                                            title="Cadastrar" data-placement="top"><i class="fa fa-plus"></i></a>
+                    <div class="col-sm-10">
+                        <br>
+                    </div>
+                    <div class="col-sm-2">
+                        <div id="form-acoes" class="form-group float-right">
+                            <div class="input-group" style="bottom: 10px;">
+                                <div class="input-group-append">
+                                    <button  id="btnShowFiltro" type="button"
+                                        title="Filtro avançado" data-placement="top"
+                                        class="btn btn-secondary fa fa-filter nav-icon"
+                                        style="float: left;width:24px">
+                                    </button>
+                                    <button  id="btnLimpar" name="acao" value="limpar"
+                                        title="Limpar" data-placement="top" type="submit"
+                                        class="btn btn-secondary fa fa-eraser nav-icon"
+                                        style="width:50px">
+                                    </button>
+                                    <button type="submit" id="btnConsultar" 
+                                        class="btn btn-secondary fa fa-search nav-icon" 
+                                        data-toggle="tooltip" title="Pesquisar" 
+                                        data-placement="top" style="width:50px">
+                                    </button>
+                                    <button type="button" id="status" 
+                                        class="btn btn-secondary dropdown-toggle-split" 
+                                        data-toggle="dropdown" aria-haspopup="true" 
+                                        aria-expanded="false" title="Ações" data-placement="top">
+                                        <i class="fa fa-check"></i>
+                                        <i class="dropdown-toggle"></i>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <input type="submit" class="dropdown-item" name="acao" value="Ativar">
+                                        <input type="submit" class="dropdown-item" name="acao" value="Inativar">
+                                        <input type="submit" class="dropdown-item" name="acao" value="Remover">
                                     </div>
+
+                                    <a href="javascript:navigate('{{route('medicosClientes.inserir')}}');" 
+                                        id="cadastro" class="btn btn-secondary" 
+                                        title="Cadastrar" data-placement="top"><i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <br/>
-                <table id="myTable" class="display table table-striped" >
-                    <thead class="tbl-cabecalho">
-                        <tr>
-                            <th scope="col" style="text-align: center;">
-                                <input type="checkbox" id="chkSelectAll" style="margin-left:10px">
-                            </th>
-                            <th scope="col"><strong>CRM/UF</strong></th>
-                            <th scope="col"><strong>Medico</strong></th>
-                            <th scope="col"><strong>Cliente Unidade</strong></th>
-                            <th scope="col"><strong>Ativo</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($medicoCLientes as $mc)
-                            <tr class="dados">   
-                                <td style="width: 3px;" class="dt-body-center">
-                                    <input type="checkbox"  name="chkOportunidade[]"  
-                                        class="chkSelect" value="{{$mc->id}}">
-                                </td>
-                                <td class="clickable" style="max-width:50px" data-id="{{$mc->id}}">
-                                    {{$mc->crmMedico}}
-                                </td>
-                                <td class="clickable" data-id="{{$mc->id}}">
-                                    {{$mc->nomeMedico}}
-                                </td>
-                                <td class="clickable" data-id="{{$mc->id}}">
-                                    {{$mc->clienteNome}}
-                                </td>
-                                <td class="clickable" data-id="{{$mc->id}}">
-                                    @if($mc->ativo == 'A')
-                                        Ativo
-                                    @else
-                                        Inativo
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="myTable" class="display table table-striped" >
+                            <thead class="tbl-cabecalho">
+                                <tr>
+                                    <th scope="col" style="text-align: center;">
+                                        <input type="checkbox" id="chkSelectAll" style="margin-left:10px">
+                                    </th>
+                                    <th scope="col"><strong>CRM/UF</strong></th>
+                                    <th scope="col"><strong>Medico</strong></th>
+                                    <th scope="col"><strong>Cliente Unidade</strong></th>
+                                    <th scope="col"><strong>Ativo</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($medicoCLientes as $mc)
+                                    <tr class="dados">   
+                                        <td style="width: 3px;" class="dt-body-center">
+                                            <input type="checkbox"  name="chkOportunidade[]"  
+                                                class="chkSelect" value="{{$mc->id}}">
+                                        </td>
+                                        <td class="clickable" style="max-width:50px" data-id="{{$mc->id}}">
+                                            {{$mc->crmMedico}}
+                                        </td>
+                                        <td class="clickable" data-id="{{$mc->id}}">
+                                            {{$mc->nomeMedico}}
+                                        </td>
+                                        <td class="clickable" data-id="{{$mc->id}}">
+                                            {{$mc->clienteNome}}
+                                        </td>
+                                        <td class="clickable" data-id="{{$mc->id}}">
+                                            @if($mc->ativo == 'A')
+                                                Ativo
+                                            @else
+                                                Inativo
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
