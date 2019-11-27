@@ -321,7 +321,7 @@
     function bindAllDocReadyThings(url){
         window.history.pushState('page2', 'Title', url);   
     }
-    
+
     $(function(){
         @if(isset($filtroObject->openFiltroAvancado) and 
             $filtroObject->openFiltroAvancado==false)
@@ -356,6 +356,35 @@
                 $('#txtIdCliente').val(ui.item.value);
                 return false;
             }
+        });
+
+        $('#myTable').DataTable({
+            "order": [[ 3, "desc" ]],
+            "pageLength": 50,
+            "columnDefs": [
+                { 
+                    "orderable": false, 
+                    "targets": 0,
+                    "className": 'select-checkbox',
+                    "width": "4%", 
+                },
+                { 
+                    "targets": 1,
+                    "width": "5%", 
+                },
+                { 
+                    "targets": 3,
+                    "width": "5%", 
+                },
+                { 
+                    "targets": 4,
+                    "width": "10%", 
+                },
+                { 
+                    "targets": 7,
+                    "width": "9%", 
+                }
+            ],
         });
         
         $("#btnShowFiltro").off('click').on('click', function(event) {
