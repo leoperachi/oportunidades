@@ -224,9 +224,9 @@
                                         style="float: left;width:24px">
                                     </button>
                                     <button  id="btnLimpar" name="acao" value="limpar"
-                                        title="Limpar" data-placement="top" type="button"
+                                        title="Limpar" data-placement="top" type="submit"
                                         class="btn btn-secondary fa fa-eraser nav-icon"
-                                        style="width:50px" url="{{route('oportunidades.consulta')}}">
+                                        style="width:50px">
                                     </button>
                                     <button id="btnConsultar" type="submit"
                                         class="btn btn-secondary fa fa-search nav-icon btnConsultar"
@@ -242,10 +242,10 @@
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <input type="button" class="dropdown-item" 
-                                            name="acao" value="priorizar" id="">
-                                        <input type="button" class="dropdown-item" 
-                                            name="acao" value="despriorizar" id="">
+                                        <input type="submit" class="dropdown-item" 
+                                            name="acao" value="priorizar">
+                                        <input type="submit" class="dropdown-item" 
+                                            name="acao" value="despriorizar">
                                     </div>
                                 </div>
                             </div>
@@ -400,23 +400,10 @@
 
         $("#btnLimpar").off('click').on('click', function(event) {
             $("#loading").show();
-            var url = $(this).attr('url');
+        });
 
-            $.ajax({
-                url: url,
-                success: function( data ) {
-                    $("#divPrincipal").html(data);
-                },
-                complete: function(){
-                    setTimeout(() => {
-                        $("#loading").hide();  
-                        bindAllDocReadyThings(url);
-                    },600);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    alert(thrownError);
-                }
-            });
+        $("#btnConsultar").off('click').on('click', function(event) {
+            $("#loading").show();
         });
 
         $('.ck-button').off('click').on('click', function(event) {
@@ -499,25 +486,8 @@
         });
 
         $(".clickable").on('click', function(event) {
-            $("#loading").show();    
-            var url = "/oportunidades/acompanhamento/" + $(this).data('id');
-            $.ajax({
-                url: url,
-                success: function( data ) {
-                    $("#divPrincipal").html(data);
-                },
-                complete: function(){
-                    setTimeout(() => {
-                        $("#loading").hide();  
-                        bindAllDocReadyThings(url);
-                    },600);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    alert(thrownError);
-                }
-            });
-
-            return false;
+            $("#loading").show();            
+            window.location.href = "/oportunidades/acompanhamento/" + $(this).data('id');
         });
 
         $("#chkSelectAll").on('click', function(){
