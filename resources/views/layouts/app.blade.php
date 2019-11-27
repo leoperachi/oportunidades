@@ -289,7 +289,7 @@
                             @endif
                             @if (\Auth::user()->hasAcesso("Disponibilidade"))
                                 <li class="nav-item">
-                                    <a url="{{route('disponibilidade.pesquisa')}}" class="nav-link btnCLick">
+                                    <a href="{{route('disponibilidade.pesquisa')}}" class="nav-link">
                                             <i class="fa fa-circle-o nav-icon"></i>
                                             <p>Disponibilidade</p>
                                         </a>
@@ -297,7 +297,7 @@
                             @endif
                             @if (\Auth::user()->hasAcesso("MedicosClientes"))
                                 <li class="nav-item">
-                                    <a class="nav-link btnCLick" url="{{route('medicosClientes.pesquisa')}}">
+                                    <a class="nav-link" href="{{route('medicosClientes.pesquisa')}}">
                                             <i class="fa fa-circle-o nav-icon"></i>
                                             <p>Cliente \ Medicos</p>
                                         </a>
@@ -323,25 +323,6 @@
 <div id="loading" class="loading" >Loading&#8230;</div>
 @yield('scripts')
     <script>
-        function navigate(url){
-            $("#loading").show();  
-            $.ajax({
-                url: url,
-                success: function( data ) {
-                    $("#divPrincipal").html(data);
-                    bindAllDocReadyThings(url);
-                },
-                complete: function(){
-                    setTimeout(() => {
-                        $("#loading").hide();  
-                    },600);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    alert(thrownError);
-                }
-            });
-        }
-
         $(document).ready(function(){
             var tam = $(window).width();
             if (tam <=991) {
@@ -362,28 +343,7 @@
 
             setTimeout(() => {
                 $("#loading").hide();               
-            }, 500);
-        
-            $(".btnCLick").off('click').on('click', function(){ 
-                $("#loading").show();
-                var u = $(this).attr('url');
-                $.ajax( {
-                    url: u,
-                    success: function( data ) {
-                        $("#loading").hide();               
-                        $("#divPrincipal").html(data);
-                        bindAllDocReadyThings(u);
-                    },
-                    complete: function(){
-                        setTimeout(() => {
-                            $("#loading").hide();
-                        }, 600);
-                    },
-                    error: function(error) {
-                        console.log(error);
-                    }
-                });
-            });
+            }, 500);        
         });
     </script>
 </body>

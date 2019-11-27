@@ -1,5 +1,6 @@
+@extends('layouts.app')
 <meta name="csrf-token" content="{{ csrf_token() }}">
-
+@section('content')
 <div class="card">
     <div class="card-body">
         <nav aria-label="breadcrumb">
@@ -71,12 +72,11 @@
                                             style="float: left;width:24px">
                                         </button>
                                         <button  id="btnLimpar" name="acao" value="limpar"
-                                            title="Limpar" data-placement="top" type="button"
+                                            title="Limpar" data-placement="top" type="submit"
                                             class="btn btn-secondary fa fa-eraser nav-icon"
-                                            style="width:50px" url="{{route('medicosClientes.pesquisa')}}">
+                                            style="width:50px">
                                         </button>
-                                        <button type="button" id="btnConsultar" 
-                                            url="{{route('medicosClientes.consultar')}}"
+                                        <button type="submit" id="btnConsultar" 
                                             class="btn btn-secondary fa fa-search nav-icon" 
                                             data-toggle="tooltip" title="Pesquisar" 
                                             data-placement="top" style="width:50px">
@@ -147,9 +147,17 @@
         </div>
     </div>
 </div>
+@yield('scripts')
 <script>
-    function bindAllDocReadyThings(url){
-        window.history.pushState('page2', 'Title', url); 
+    $(function(){
+        $("#chkSelectAll").on('click', function(){
+            if ($(this).is( ":checked" )) {
+                $(".chkSelect").attr('checked', true);
+            } else {
+                $(".chkSelect").attr('checked', false); 
+            }   
+        });
+
         $("#txtCliente").autocomplete({
             source: function( request, response ) {
                 $.ajax( {
@@ -248,16 +256,6 @@
                 .append( "<div>" + item.crm + "" + item.crm_uf + " - " + item.nomeMedico + "</div>" )
                 .appendTo( ul );
         }
-    }
-
-    $(function(){
-        $("#chkSelectAll").on('click', function(){
-            if ($(this).is( ":checked" )) {
-                $(".chkSelect").attr('checked', true);
-            } else {
-                $(".chkSelect").attr('checked', false); 
-            }   
-        });
         
         $("#myTable").DataTable({
             "pageResize": true,
@@ -362,3 +360,4 @@
         });
     });
 </script>
+@endsection
