@@ -354,11 +354,11 @@
                             @endif
                             @if (\Auth::user()->hasAcesso("Oportunidades"))
                                 <li class="nav-item">
-                                    <a url="{{route('oportunidades.consulta')}}" class="nav-link btnCLick">
-                                            <i class="fa fa-circle-o nav-icon"></i>
-                                            <p>Consulta Oportunidades</p>
-                                        </a>
-                                    </li>
+                                    <a href="{{route('oportunidades.consulta')}}" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Consulta Oportunidades</p>
+                                    </a>
+                                </li>
                             @endif
                             @if (\Auth::user()->hasAcesso("Disponibilidade"))
                                 <li class="nav-item">

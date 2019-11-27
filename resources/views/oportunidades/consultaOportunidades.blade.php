@@ -1,6 +1,7 @@
-
+@extends('layouts.app')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
+@section('content')
 <div class="card" id="app">
     <div class="card-body">
         <nav aria-label="breadcrumb">
@@ -315,7 +316,7 @@
         </div>
     </div>
 </div>
-
+@yield('scripts')
 <script>
     function bindAllDocReadyThings(url){
         window.history.pushState('page2', 'Title', url);
@@ -550,3 +551,4 @@
         });
     });
 </script>
+@endsection
