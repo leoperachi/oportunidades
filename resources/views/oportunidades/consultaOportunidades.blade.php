@@ -334,7 +334,7 @@
         $("#txtCliente").autocomplete({
             source: function( request, response ) {
                 $.ajax( {
-                    url: "/oportunidades/autocomplete_cliente",
+                    url: "/homolog_oportunidade/oportunidades/public/oportunidades/autocomplete_cliente",
                     dataType: "json",
                     data: {
                         term: request.term

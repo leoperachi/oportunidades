@@ -2,7 +2,8 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 @section('content')
-<form id="formAcompanhamento" method="post" action="{{route('oportunidades.selecionar')}}">
+<form id="formAcompanhamento" method="post" 
+    action="{{route('oportunidades.selecionar')}}">
     <div class="card" id="app">
         <div class="card-body">
             <nav aria-label="breadcrumb">
@@ -11,7 +12,7 @@
                         <a href="{{ route('home') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="javascript:navigate('{{route('oportunidades.consulta')}}');">Consulta</a>
+                        <a href="{{route('oportunidades.consulta')}}">Consulta</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         <strong>Acompanhamento</strong>
@@ -244,22 +245,9 @@
                 data: { tipo: tipo, idOportunidade: idOportunidade } ,
                 contentType: 'application/json; charset=utf-8',
                 success: function (response) {
-                    var url = "/oportunidades/acompanhamento/" + response
-                    $.ajax({
-                        url: url,
-                        success: function( data ) {
-                            $("#divPrincipal").html(data);
-                        },
-                        complete: function(){
-                            setTimeout(() => {
-                                $("#loading").hide();  
-                                bindAllDocReadyThings(url);
-                            },600);
-                        },
-                        error: function (xhr, ajaxOptions, thrownError) {
-                            alert(thrownError);
-                        }
-                    });
+                    window.location.href = 
+                        "/homolog_oportunidade/oportunidades/public/oportunidades/acompanhamento/" + 
+                            response;
                 },
                 error: function () {
                     alert("error");
