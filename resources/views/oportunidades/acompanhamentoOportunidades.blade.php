@@ -1,7 +1,7 @@
-
+@extends('layouts.app')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
+@section('content')
 <form id="formAcompanhamento" method="post" action="{{route('oportunidades.selecionar')}}">
     <div class="card" id="app">
         <div class="card-body">
@@ -369,3 +369,4 @@
         }, 50); 
     });
 </script>
+@endsection

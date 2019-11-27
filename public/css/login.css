@@ -23,20 +23,25 @@ body {
 	background-size: cover;
 }
 
-
-	
-.card {
-	right: 5px !important;
-	top: 0px !important;
-	margin-top: 80px !important;
-}
-
 .card-login{
-	margin-left: 10px;
-	margin-right: 0;
-	
+
+    margin-right: 180px;
 }
 
+@media (max-width:1176px){
+	
+	.card {
+		right: 5px !important;
+		top: 0px !important;
+		margin-top: 80px !important;
+	}
+	
+	.card-login{
+		margin-left: 10px;
+		margin-right: 0;
+		
+	}
+}
 
 @-webkit-keyframes Gradient {
 	0% {

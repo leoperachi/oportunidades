@@ -430,7 +430,7 @@
                 }
 
                 $(esseCheckbox).prop("checked", true);
-                this.form.submit();
+                $("#formConsultar").submit();
             }
 
             return false;
