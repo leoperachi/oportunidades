@@ -228,7 +228,7 @@
                                         class="btn btn-secondary fa fa-eraser nav-icon"
                                         style="width:50px" url="{{route('oportunidades.consulta')}}">
                                     </button>
-                                    <button id="btnConsultar" type="button" url="{{route('oportunidades.consultar')}}"
+                                    <button id="btnConsultar" type="submit"
                                         class="btn btn-secondary fa fa-search nav-icon btnConsultar"
                                         data-toggle="tooltip" title="Pesquisar" value="consultar"
                                         data-placement="top" style="width:50px">
@@ -319,7 +319,18 @@
 @yield('scripts')
 <script>
     function bindAllDocReadyThings(url){
-        window.history.pushState('page2', 'Title', url);
+        window.history.pushState('page2', 'Title', url);   
+    }
+    
+    $(function(){
+        @if(isset($filtroObject->openFiltroAvancado) and 
+            $filtroObject->openFiltroAvancado==false)
+            $("#filtroAvancado").hide();
+        @endif
+
+        $( "#txtDtInicio" ).datepicker();
+        $( "#txtDtFinal" ).datepicker();
+
         $("#txtCliente").autocomplete({
             source: function( request, response ) {
                 $.ajax( {
@@ -346,15 +357,6 @@
                 return false;
             }
         });
-    }
-    $(function(){
-        @if(isset($filtroObject->openFiltroAvancado) and 
-            $filtroObject->openFiltroAvancado==false)
-            $("#filtroAvancado").hide();
-        @endif
-
-        $( "#txtDtInicio" ).datepicker();
-        $( "#txtDtFinal" ).datepicker();
         
         $("#btnShowFiltro").off('click').on('click', function(event) {
             if($("#filtroAvancado").is(":visible")){
@@ -495,59 +497,6 @@
             } else {
                 $(".chkSelect").attr('checked', false); 
             }   
-        });
-
-        $('.btnConsultar').off('click').on('click', function(event) {
-            $("#loading").show();
-            var u = $(this).attr('url');
-            $.ajax( {
-                url: u,
-                method: "POST",
-                data: $("#formConsultar").serialize(),
-                success: function( data ) {      
-                    $("#divPrincipal").html(data);  
-                },
-                complete: function(){
-                    setTimeout(() => {
-                        $('#myTable').DataTable({
-                                "order": [[ 3, "desc" ]],
-                                "pageLength": 50,
-                                "columnDefs": [
-                                    { 
-                                        "orderable": false, 
-                                        "targets": 0,
-                                        "className": 'select-checkbox',
-                                        "width": "4%", 
-                                    },
-                                    { 
-                                        "targets": 1,
-                                        "width": "5%", 
-                                    },
-                                    { 
-                                        "targets": 3,
-                                        "width": "5%", 
-                                    },
-                                    { 
-                                        "targets": 4,
-                                        "width": "10%", 
-                                    },
-                                    { 
-                                        "targets": 7,
-                                        "width": "9%", 
-                                    }
-                                ],
-                            });
-                        $("#loading").hide();    
-                        bindAllDocReadyThings(u); 
-                    }, 600);
-
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    alert(thrownError);
-                }
-            });
-            
-            return false;
         });
     });
 </script>
