@@ -253,7 +253,7 @@
                     </div>
                 </div>
                 <br/>
-                <table id="myTable" class="display table table-striped" >
+                <table id="myTable" class="table table-striped table-responsive-sm">
                     <thead class="tbl-cabecalho">
                         <tr>
                             <th scope="col" style="text-align: center">
