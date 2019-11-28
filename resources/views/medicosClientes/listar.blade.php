@@ -106,7 +106,8 @@
                 <br/>
                 <div class="row">
                     <div class="col-sm-12">
-                        <table id="myTable" class="display table table-striped" >
+                        <table id="myTable" class="display table table-striped" 
+                            style="width:100%!important;">
                             <thead class="tbl-cabecalho">
                                 <tr>
                                     <th scope="col" style="text-align: center;">
