@@ -105,9 +105,16 @@ class ClienteMedicoController extends Controller
     }
 
     public function inserir(){
+        $clientes = OportunidadeCliente::select('id', 'nome')
+            ->get();
+        $especialidades = Especialidade::select('id', 'nome')
+            ->get();
+
         return view('medicosClientes.editar')
             ->with('medicoOportunidadeCliente', 
-                $this->montaMedicoOportunidadeCliente());
+                $this->montaMedicoOportunidadeCliente())
+            ->with("especialidades", $especialidades)
+            ->with("clientes", $clientes);
     }
 
     private function montaMedicoOportunidadeCliente(){
@@ -117,7 +124,10 @@ class ClienteMedicoController extends Controller
         $medicoOportunidadeCliente->nomeMedico = '';
         $medicoOportunidadeCliente->clienteNome = '';
         $medicoOportunidadeCliente->idCliente = 0;
-        return $medicoOportunidadeCliente;
+        $medicoOportunidadeCliente->emailMedico = '';
+        $medicoOportunidadeCliente->dtNascMedico = '';
+        $medicoOportunidadeCliente->foneMedico = '';
+        return $medicoOportunidadeCliente;;
     }
 
     private function montaQuery()

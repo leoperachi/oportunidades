@@ -67,7 +67,10 @@
                     <div class="dropdown-divider"></div>
                     <form method="post" action="{{route('logout')}}">
                         @csrf
-                        <button type="submit" class="dropdown-item dropdown-footer">Logout</button>
+                        <button type="submit" id="btnLogout" 
+                            class="dropdown-item dropdown-footer">
+                            Logout
+                        </button>
                     </form>
                 </div>
             </li>
@@ -109,7 +112,8 @@
                             @endif
                             @if (\Auth::user()->hasAcesso("Aviso"))
                             <li class="nav-item">
-                                <a href="{{route('aviso.listar')}}" class="nav-link">                                    <i class="fa fa-circle-o nav-icon"></i>
+                                <a href="{{route('aviso.listar')}}" class="nav-link">                                    
+                                    <i class="fa fa-circle-o nav-icon"></i>
                                     <p>Aviso</p>
                                 </a>
                             </li>
@@ -336,6 +340,10 @@
             });
 
             $(document).on('click', ".nav-treeview > .nav-item > .nav-link", function(){
+                $("#loading").show(); 
+            });
+            
+            $("#btnLogout").click(function(){
                 $("#loading").show(); 
             });
 

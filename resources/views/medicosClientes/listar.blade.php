@@ -95,7 +95,7 @@
                                         <input type="submit" class="dropdown-item" name="acao" value="Remover">
                                     </div>
 
-                                    <a href="javascript:navigate('{{route('medicosClientes.inserir')}}');" 
+                                    <a href="{{route('medicosClientes.inserir')}}" 
                                         id="cadastro" class="btn btn-secondary" 
                                         title="Cadastrar" data-placement="top"><i class="fa fa-plus"></i></a>
                                 </div>
@@ -332,25 +332,8 @@
         });
 
         $(".clickable").on('click', function(event) {
-            $("#loading").show();    
-            var url = "/medicosClientes/editar/" + $(this).data('id');
-            $.ajax({
-                url: url,
-                success: function( data ) {
-                    $("#divPrincipal").html(data);
-                },
-                complete: function(){
-                    setTimeout(() => {
-                        $("#loading").hide();  
-                        bindAllDocReadyThings(url);
-                    },600);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    alert(thrownError);
-                }
-            });
-
-            return false;
+            $("#loading").show();              
+            window.location.href = "{{url('/')}}/medicosClientes/editar/" + $(this).data('id');
         });
 
         $("#btnShowFiltro").off('click').on('click', function(event) {

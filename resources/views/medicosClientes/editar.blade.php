@@ -1,5 +1,6 @@
+@extends('layouts.app')
 <meta name="csrf-token" content="{{ csrf_token() }}">
-
+@section('content')
 <div class="card">
     <div class="card-body">
         <nav aria-label="breadcrumb">
@@ -8,7 +9,7 @@
                     <a href="{{ route('home') }}">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="javascript:navigate('{{route('medicosClientes.pesquisa')}}');">
+                    <a href="{{route('medicosClientes.pesquisa')}}">
                         Consulta Cliente Medico
                     </a>
                 </li>
@@ -110,7 +111,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <table id="tblEspecliades" class="display table table-striped" >
+                <table id="tblEspecliades" class="display table table-striped" style="width:100%!important;">
                     <thead class="tbl-cabecalho">
                         <tr>
                             <th scope="col" style="text-align: center;">
@@ -167,7 +168,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <table id="tblClientes" class="display table table-striped" >
+                <table id="tblClientes" class="display table table-striped" style="width:100%!important;" >
                     <thead class="tbl-cabecalho">
                         <tr>
                             <th scope="col" style="text-align: center;">
@@ -194,6 +195,7 @@
         </div>
     </div>
 </div>
+@yield('scripts')
 <script>
     function bindAllDocReadyThings(url){
         window.history.pushState('page2', 'Title', url);
@@ -300,4 +302,4 @@
         });
     });
 </script>
-    
+@endsection
