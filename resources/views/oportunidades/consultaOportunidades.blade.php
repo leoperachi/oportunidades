@@ -359,7 +359,6 @@
         });
 
         $('#myTable').DataTable({
-            "order": [[ 3, "desc" ]],
             "pageLength": 50,
             "columnDefs": [
                 { 

@@ -199,7 +199,10 @@ class ConsultaOportunidadesController extends Controller
             }
         }
 
-        $oportunidades = $oportunidades->orderBy('oportunidade.prioridade', 'DESC')->get();
+        $oportunidades = $oportunidades
+            ->orderBy('oportunidade.id', 'DESC')
+            ->orderBy('oportunidade.idoportunidade_status', 'DESC')
+            ->get();
 
         if(!$limpar){
             $chkSeg = $request->input('chkSeg');
