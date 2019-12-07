@@ -436,10 +436,8 @@
         });
 
         $(".clickable").on('click', function(event) {
-            $("#loading").show();            
-            window.location.href = 
-                "/homolog_oportunidade/oportunidades/public/oportunidades/acompanhamento/" + 
-                    $(this).data('id');
+            $("#loading").show();        
+            window.location.href = "{{url('/')}}/oportunidades/acompanhamento/" + $(this).data('id');
         });
 
         $("#chkSelectAll").on('click', function(){

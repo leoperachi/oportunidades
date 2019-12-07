@@ -105,10 +105,8 @@ class ClienteMedicoController extends Controller
     }
 
     public function inserir(){
-        $clientes = OportunidadeCliente::select('id', 'nome')
-            ->get();
-        $especialidades = Especialidade::select('id', 'nome')
-            ->get();
+        $clientes =[];
+        $especialidades = [];
 
         return view('medicosClientes.editar')
             ->with('medicoOportunidadeCliente', 

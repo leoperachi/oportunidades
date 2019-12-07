@@ -13,5 +13,6 @@ abstract class OportunidadeStatus
     const Importado = 7;
     const Importacao_Iniciada = 8;
     const Importacao_Concluida = 9;
+    const Com_Candidato = 10;
 }
 

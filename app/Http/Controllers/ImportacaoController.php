@@ -652,19 +652,13 @@ class ImportacaoController extends Controller
 
     private function temVagasEmAbertoComCandidato() 
     {
-        $oportunidadesAbertas = \App\Models\Oportunidade::select('oportunidade.*')
+        $oportunidadesCom_Candidato = \App\Models\Oportunidade::select('oportunidade.*')
             ->join('oportunidade_status', 'oportunidade.idoportunidade_status', 'oportunidade_status.id')
-            ->where('oportunidade_status.id', '=', \App\Models\OportunidadeStatus::Aberta)
+            ->where('oportunidade_status.id', '=', \App\Models\OportunidadeStatus::Com_Candidato)
             ->get();
 
-        foreach($oportunidadesAbertas as $opa){
-            $interessados = \App\Models\OportunidadeMedicosInteressados::select('*')
-                ->where('oportunidade_medicos_interessados.idoportunidade', '=', $opa->id)
-                ->get();
-
-            if(count($interessados)>0){
-                return true;
-            }
+        if(count($oportunidadesCom_Candidato)>0){
+            return true;
         }
 
         return false;
@@ -681,7 +675,7 @@ class ImportacaoController extends Controller
     {   
         $oportunidadesAbertas = \App\Models\Oportunidade::select('oportunidade.*')
             ->join('oportunidade_status', 'oportunidade.idoportunidade_status', 'oportunidade_status.id')
-            ->where('oportunidade_status.id', '=', \App\Models\OportunidadeStatus::Aberta)
+            ->where('oportunidade_status.id', '<>', \App\Models\OportunidadeStatus::Inativa)
             ->get();
         
         foreach($oportunidadesAbertas as $opa){

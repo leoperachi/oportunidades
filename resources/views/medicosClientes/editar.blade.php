@@ -197,9 +197,7 @@
 </div>
 @yield('scripts')
 <script>
-    function bindAllDocReadyThings(url){
-        window.history.pushState('page2', 'Title', url);
-
+    $(function(){
         $("#txtEspecialidade").autocomplete({
             search  : function()
             {
@@ -211,7 +209,7 @@
             },
             source: function( request, response ) {
                 $.ajax( {
-                    url: "/especialidades/autocomplete_cliente",
+                    url: "{{route('especialidade.autocomplete_cliente')}}",
                     dataType: "json",
                     data: {
                         term: request.term
@@ -244,7 +242,7 @@
             },
             source: function( request, response ) {
                 $.ajax( {
-                    url: "/oportunidades/autocomplete_cliente",
+                    url: "{{route('oportunidades.autocomplete_cliente')}}",
                     dataType: "json",
                     data: {
                         term: request.term
@@ -266,8 +264,7 @@
                 return false;
             }
         });
-    }
-    $(function(){
+
         $("#tblEspecliades").DataTable({
             "columnDefs": [
                 { 
