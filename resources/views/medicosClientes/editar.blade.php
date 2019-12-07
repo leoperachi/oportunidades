@@ -118,17 +118,24 @@
                                 <input type="checkbox" id="chkSelectAll" style="margin-left:10px">
                             </th>
                             <th scope="col"><strong>Especialidade</strong></th>
+                            <th scope="col"><strong></strong></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($especialidades as $especialidade)
                             <tr class="dados">   
                                 <td style="width: 3px;" class="dt-body-center">
-                                    <input type="checkbox"  name="chkOportunidade[]"  
+                                    <input type="checkbox"  name="chkEspecialidade[]"  
                                         class="chkSelect">
                                 </td>
                                 <td class="clickable" style="max-width:50px">
                                     {{$especialidade->nome}}
+                                </td>
+                                <td style="text-align:end;">
+                                    <button class="btn btn-sm btn-dark btnRmvEspecialidade" data-toggle="tooltip" data-id="{{$especialidade->id}}"
+                                        value="cancelar"  type="button" data-placement="bottom" title="Cancelar">
+                                        <i class="fa fa-minus-circle"></i>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
@@ -175,6 +182,7 @@
                                 <input type="checkbox" id="chkSelectAll" style="margin-left:10px">
                             </th>
                             <th scope="col"><strong>Cliente Nome</strong></th>
+                            <th scope="col"><strong></strong></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -187,17 +195,37 @@
                                 <td class="clickable" style="max-width:50px">
                                     {{$cliente->nome}}
                                 </td>
+                                <td style="text-align:end;">
+                                    <button class="btn btn-sm btn-dark btnRmvCliente" data-toggle="tooltip" data-id="{{$cliente->id}}"
+                                        value="cancelar"  type="button" data-placement="bottom" title="Cancelar">
+                                        <i class="fa fa-minus-circle"></i>
+                                    </button>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="col-md-12" style="float: right;">
+                <div style="float: right;">
+                    <input type="submit" class="btn btn-success" name="salvar" value="Salvar">
+                    <input type="submit" class="btn btn-default" name="remover" value="Remover">
+                    <a href="{{ route('aviso.listar') }}" class="btn btn-default" name="cancelar">Cancelar</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 @yield('scripts')
 <script>
     $(function(){
+        $("#txtDtNasc").datepicker();
+
         $("#txtEspecialidade").autocomplete({
             search  : function()
             {
@@ -289,13 +317,28 @@
 
         $("#btnAddCliente").on('click', function(){
             $("#tblClientes").DataTable().row.add( [
-                '1',
-                'teste cliente',
+                '<input type="checkbox" name="chkCliente[]" class="chkSelect">',
+                $("#txtCliente").val(),
+                '<div style="text-align: end;"><button class="btn btn-sm btn-dark btnRmvCliente" ' + 
+                'data-toggle="tooltip" value="cancelar"  type="button" data-placement="bottom" ' + 
+                'title="Cancelar"><i class="fa fa-minus-circle"></i></button></div>',
             ] ).draw( false );
+
+            $("#txtCliente").val('');
+            $("#tblClientes tbody tr .select-checkbox").addClass('dt-body-center');
         });
 
         $("#btnAddEspecialidade").on('click', function(){
-            alert('add especialidades')
+            $("#tblEspecliades").DataTable().row.add( [
+                '<input type="checkbox" name="chkEspecialidade[]" class="chkSelect">',
+                $("#txtEspecialidade").val(),
+                '<div style="text-align: end;"><button class="btn btn-sm btn-dark btnRmvEspecialidade" ' + 
+                'data-toggle="tooltip" value="cancelar"  type="button" data-placement="bottom" title="Cancelar"> ' + 
+                '<i class="fa fa-minus-circle"></i></button></div>',
+            ] ).draw( false );
+
+            $("#txtEspecialidade").val('');
+            $("#tblEspecliades tbody tr .select-checkbox").addClass('dt-body-center');
         });
     });
 </script>
